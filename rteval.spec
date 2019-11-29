@@ -2,28 +2,29 @@
 Summary:	Utility to evaluate system suitability for RT Linux
 Summary(pl.UTF-8):	Narzędzie do szacowania przydatkości systemu dla Linuksa RT
 Name:		rteval
-Version:	2.14
+Version:	3.0
 Release:	0.1
 License:	GPL v2
 Group:		Applications/System
-Source0:	https://mirrors.edge.kernel.org/pub/linux/utils/rteval/py2/%{name}-%{version}.tar.xz
-# Source0-md5:	ab392d405515d004534e727f9cafc17e
+Source0:	https://www.kernel.org/pub/linux/utils/rteval/%{name}-%{version}.tar.xz
+# Source0-md5:	e4a90f27a3fcc528acaa0eb1f63bfdd0
 URL:		https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rteval
-BuildRequires:	python >= 2.2
+BuildRequires:	python3 >= 1:3.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	numactl
-Requires:	python-ethtool
-Requires:	python-libxml2
-Requires:	python-modules >= 2.2
-Requires:	python-schedutils
+Requires:	python3-ethtool
+Requires:	python3-libxml2
+Requires:	python3-lxml
+Requires:	python3-modules >= 1:3.2
+Requires:	python3-schedutils
 Requires:	rt-tests >= 0.97
 Requires:	sysstat
 Requires:	trace-cmd
 # TODO:
-#Requires:	python-dmidecode >= 3.10
+#Requires:	python3-dmidecode >= 3.10
 #Requires:	rteval-loads >= 1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,14 +50,12 @@ reakcji.
 %setup -q
 
 %build
-%py_build
+%py3_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py_install
-
-%py_postclean
+%py3_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -66,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README TODO
 %attr(755,root,root) %{_bindir}/rteval
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/rteval.conf
-%{py_sitescriptdir}/rteval
-%{py_sitescriptdir}/rteval-%{version}-py*.egg-info
+%{py3_sitescriptdir}/rteval
+%{py3_sitescriptdir}/rteval-%{version}-py*.egg-info
 %{_datadir}/rteval
 %{_mandir}/man8/rteval.8*
