@@ -2,12 +2,12 @@
 Summary:	Utility to evaluate system suitability for RT Linux
 Summary(pl.UTF-8):	Narzędzie do szacowania przydatkości systemu dla Linuksa RT
 Name:		rteval
-Version:	3.1
+Version:	3.2
 Release:	0.1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://www.kernel.org/pub/linux/utils/rteval/%{name}-%{version}.tar.xz
-# Source0-md5:	4e8cd356869f6025e9cfcf45ebb9f607
+# Source0-md5:	36203a51a017d6c014ea45099dd62f67
 URL:		https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rteval
 BuildRequires:	python3 >= 1:3.2
 BuildRequires:	rpm-pythonprov
