@@ -2,29 +2,27 @@
 Summary:	Utility to evaluate system suitability for RT Linux
 Summary(pl.UTF-8):	Narzędzie do szacowania przydatkości systemu dla Linuksa RT
 Name:		rteval
-Version:	3.9
+Version:	3.10
 Release:	0.1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://www.kernel.org/pub/linux/utils/rteval/%{name}-%{version}.tar.xz
-# Source0-md5:	2df187f69778e52ef2442c24b9657981
+# Source0-md5:	c1238172b44f40afab619c7a6b6cf4f9
 URL:		https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rteval
-BuildRequires:	python3 >= 1:3.2
+BuildRequires:	python3 >= 1:3.10
+BuildRequires:	python3-setuptools >= 1:61.0
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	dmidecode
 Requires:	numactl
-Requires:	python3-ethtool
 Requires:	python3-libxml2
-Requires:	python3-lxml
-Requires:	python3-modules >= 1:3.2
-Requires:	python3-schedutils
+Requires:	python3-modules >= 1:3.10
 Requires:	rt-tests >= 0.97
 Requires:	sysstat
 Requires:	trace-cmd
 # TODO:
-#Requires:	python3-dmidecode >= 3.10
 #Requires:	rteval-loads >= 1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -62,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README TODO
+%doc README README-Dockerfile
 %attr(755,root,root) %{_bindir}/rteval
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/rteval.conf
 %{py3_sitescriptdir}/rteval
